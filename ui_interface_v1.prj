@@ -1,7 +1,8 @@
 [Project Header]
 Version = 2000
 Encoding = "ANSI"
-Pathname = "/c/Users/chris/Documents/Senior Design/ui_interface_v1.prj"
+Pathname Line0001 = "/c/Users/chris/Documents/Senior Design/Automated-Synchro-Tester/ui_interface_v1."
+Pathname Line0002 = "prj"
 Project Label = "Synchro Tester Control Panel"
 CVI Dir = "/c/program files (x86)/national instruments/cvi2020"
 CVI Shared Dir = "/C/Program Files (x86)/National Instruments/Shared/CVI"
@@ -11,7 +12,7 @@ IVI Standard Root Dir = "/C/Program Files (x86)/IVI Foundation/IVI"
 VXIplug&play Framework Dir = "/C/Program Files (x86)/IVI Foundation/VISA/winnt"
 IVI Standard Root 64-bit Dir = "/C/Program Files/IVI Foundation/IVI"
 VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
-Number of Files = 1
+Number of Files = 3
 Target Type = "Executable"
 Flags = 2064
 Copied From Locked InstrDrv Directory = False
@@ -20,25 +21,51 @@ Locked InstrDrv Name = ""
 Don't Display Deploy InstrDrv Dialog = False
 
 [Folders]
-Include Files Folder Not Added Yet = True
 User Interface Files Folder Not Added Yet = True
 Instrument Files Folder Not Added Yet = True
 Library Files Folder Not Added Yet = True
 Folder 0 = "Source Files"
 FolderEx 0 = "Source Files"
+Folder 1 = "Include Files"
+FolderEx 1 = "Include Files"
 
 [File 0001]
 File Type = "CSource"
 Res Id = 1
 Path Is Rel = True
 Path Rel To = "Project"
-Path Rel Path = "main.c"
+Path Rel Path = "../main.c"
 Path = "/c/Users/chris/Documents/Senior Design/main.c"
 Exclude = False
 Compile Into Object File = False
 Project Flags = 0
 Folder = "Source Files"
 Folder Id = 0
+
+[File 0002]
+File Type = "CSource"
+Res Id = 2
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "../pin_config.c"
+Path = "/c/Users/chris/Documents/Senior Design/pin_config.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 0
+
+[File 0003]
+File Type = "Include"
+Res Id = 3
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "../pin_config.h"
+Path = "/c/Users/chris/Documents/Senior Design/pin_config.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
 
 [Custom Build Configs]
 Num Custom Build Configs = 0
@@ -363,19 +390,23 @@ Compiler Defines = "/DWIN32_LEAN_AND_MEAN"
 Executable File_Debug Is Rel = True
 Executable File_Debug Rel To = "Project"
 Executable File_Debug Rel Path = "ui_interface_v1.exe"
-Executable File_Debug = "/c/Users/chris/Documents/Senior Design/ui_interface_v1.exe"
+Executable File_Debug Line0001 = "/c/Users/chris/Documents/Senior Design/Automated-Synchro-Tester/ui_interface_v1."
+Executable File_Debug Line0002 = "exe"
 Executable File_Release Is Rel = True
 Executable File_Release Rel To = "Project"
 Executable File_Release Rel Path = "ui_interface_v1.exe"
-Executable File_Release = "/c/Users/chris/Documents/Senior Design/ui_interface_v1.exe"
+Executable File_Release Line0001 = "/c/Users/chris/Documents/Senior Design/Automated-Synchro-Tester/ui_interface_v1."
+Executable File_Release Line0002 = "exe"
 Executable File_Debug64 Is Rel = True
 Executable File_Debug64 Rel To = "Project"
 Executable File_Debug64 Rel Path = "ui_interface_v1.exe"
-Executable File_Debug64 = "/c/Users/chris/Documents/Senior Design/ui_interface_v1.exe"
+Executable File_Debug64 Line0001 = "/c/Users/chris/Documents/Senior Design/Automated-Synchro-Tester/ui_interface_v1."
+Executable File_Debug64 Line0002 = "exe"
 Executable File_Release64 Is Rel = True
 Executable File_Release64 Rel To = "Project"
 Executable File_Release64 Rel Path = "ui_interface_v1.exe"
-Executable File_Release64 = "/c/Users/chris/Documents/Senior Design/ui_interface_v1.exe"
+Executable File_Release64 Line0001 = "/c/Users/chris/Documents/Senior Design/Automated-Synchro-Tester/ui_interface_v1."
+Executable File_Release64 Line0002 = "exe"
 Icon File Is Rel = False
 Icon File = ""
 Application Title = ""

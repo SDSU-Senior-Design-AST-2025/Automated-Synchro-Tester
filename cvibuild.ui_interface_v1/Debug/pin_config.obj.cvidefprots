@@ -1,0 +1,15 @@
+[setOutput]
+Class="Function"
+Prototype="void setOutput(unsigned char pin);"
+SourceLocation="c:\Users\chris\Documents\Senior Design\pin_config.c:8:6"
+
+[setInput]
+Class="Function"
+Prototype="void setInput(unsigned char pin);"
+SourceLocation="c:\Users\chris\Documents\Senior Design\pin_config.c:12:6"
+
+[configurePins]
+Class="Function"
+Prototype="void configurePins();"
+SourceLocation="c:\Users\chris\Documents\Senior Design\pin_config.c:16:6"
+

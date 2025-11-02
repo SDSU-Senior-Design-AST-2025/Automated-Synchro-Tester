@@ -1,0 +1,54 @@
+-nologo
+-out:c:\Users\chris\Documents\Senior Design\Automated-Synchro-Tester\cvibuild.ui_interface_v1\Debug\ui_interface_v1.exe
+-arch:x86
+-timestamp
+-debug:2
+-project:c:\Users\chris\Documents\Senior Design\Automated-Synchro-Tester\ui_interface_v1.prj
+-res:c:\Users\chris\Documents\Senior Design\Automated-Synchro-Tester\cvibuild.ui_interface_v1\Debug\resources.res
+-entry:_CVIWinMainStartupCodeForDebugging@0
+-base:0x400000
+-linked:c:\Users\chris\Documents\Senior Design\Automated-Synchro-Tester\cvibuild.ui_interface_v1\Debug\linkersummary.txt
+-dlldeps:c:\Users\chris\Documents\Senior Design\Automated-Synchro-Tester\cvibuild.ui_interface_v1\Debug\dlldependencies.txt
+-licensing:c:\Users\chris\Documents\Senior Design\Automated-Synchro-Tester\cvibuild.ui_interface_v1\Debug\linkerlicensing.txt
+-browsedeps:c:\Users\chris\Documents\Senior Design\Automated-Synchro-Tester\cvibuild.ui_interface_v1\Debug\moduledependencies.txt
+-stackreserve:1048576
+-stackcommit:4096
+-in:c:\Users\chris\Documents\Senior Design\Automated-Synchro-Tester\cvibuild.ui_interface_v1\Debug\main.obj
+-in:c:\Users\chris\Documents\Senior Design\Automated-Synchro-Tester\cvibuild.ui_interface_v1\Debug\pin_config.obj
+-more:c:\program files (x86)\national instruments\cvi2020\bin\msvc\cvistart.lib
+-more:c:\program files (x86)\national instruments\cvi2020\bin\msvc\cvi.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\advanlys.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\advapi32.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\toolslib\toolbox\msvc\asynctmr.obj
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\bufferoverflowu.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\cvi_db.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cviauto.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvidotnet.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvinetstreams.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvinetv.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvintwrk.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvitdms.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\gdi32.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\gpib.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\toolslib\custctrl\msvc\ImageControl.obj
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\ivi.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\kernel32.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\NIDAQmx.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\NIDiagCS.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\niemcc.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\niimaq.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\niimaqdx.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nise.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\niseCfg.obj
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nisyscfg.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nivision.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\nivxi.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nixnet.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\omp.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\pid.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\toolslib\toolbox\msvc\toolbox.obj
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\user32.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\uuid.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\VBAIInterfaceC.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\visa.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\winmm.lib

@@ -26,7 +26,7 @@
 #define  PANEL_TEXTMSG_2                  11      /* control type: textMsg, callback function: (none) */
 #define  PANEL_TEXTMSG_3                  12      /* control type: textMsg, callback function: (none) */
 #define  PANEL_LED                        13      /* control type: LED, callback function: (none) */
-#define  PANEL_GRAPH                      14      /* control type: graph, callback function: (none) */
+#define  PANEL_PANEL_GRAPH                14      /* control type: graph, callback function: (none) */
 #define  PANEL_TABLE                      15      /* control type: table, callback function: (none) */
 #define  PANEL_TEXTMSG_4                  16      /* control type: textMsg, callback function: (none) */
 

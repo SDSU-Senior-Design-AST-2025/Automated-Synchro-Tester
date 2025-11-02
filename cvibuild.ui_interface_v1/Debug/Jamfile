@@ -1,0 +1,42 @@
+CCFLAGS = -g ;
+HDRS = 	"C:\\Users\\Public\\Documents\\National Instruments\\TestStand 2023 (32-bit)\\AdapterSupport\\CVI"
+	"C:\\Program Files (x86)\\National Instruments\\TestStand 2023\\API\\DLLInterfaces"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\instr\\TestStand\\API"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\activex\\word"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\activex\\excel"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\custctrl"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\custctrl\\custsupp"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\cvirtsup"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\datasock"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\daqUtil"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\printing"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\toolbox"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\reportgen"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\localui"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\instr"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\toolslib\\custctrl"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\toolslib\\custctrl\\custsupp"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\instr"
+	"C:\\ProgramData\\National Instruments\\CVI2020\\instr"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\include"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\include"
+	"C:\\ProgramData\\National Instruments\\CVI2020\\include"
+	"C:\\ProgramData\\National Instruments\\CVI\\include"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\include\\ansi"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\include\\clang\\3.3"
+	"C:\\Program Files (x86)\\IVI Foundation\\IVI\\Include"
+	"C:\\Program Files (x86)\\IVI Foundation\\VISA\\winnt\\include"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\MSDTRedistributables\\SDKHeaderFiles\\8.1"
+	"c:\\Program Files (x86)\\National Instruments\\CVI2020\\bin"
+	"c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin"
+	;
+LOCATE on "main.c" = "c:\\Users\\chris\\Documents\\Senior Design" ;
+LOCATE on "pin_config.c" = "c:\\Users\\chris\\Documents\\Senior Design" ;
+LOCATE on "pin_config.h" = "c:\\Users\\chris\\Documents\\Senior Design" ;
+Object "c:\\Users\\chris\\Documents\\Senior Design\\Automated-Synchro-Tester\\cvibuild.ui_interface_v1\\Debug\\pin_config.obj" : "c:\\Users\\chris\\Documents\\Senior Design\\pin_config.c" ;
+FILENUM on "c:\\Users\\chris\\Documents\\Senior Design\\Automated-Synchro-Tester\\cvibuild.ui_interface_v1\\Debug\\pin_config.obj" = 1 ;
+DEFPROTS on "c:\\Users\\chris\\Documents\\Senior Design\\Automated-Synchro-Tester\\cvibuild.ui_interface_v1\\Debug\\pin_config.obj" = "c:\\Users\\chris\\Documents\\Senior Design\\Automated-Synchro-Tester\\cvibuild.ui_interface_v1\\Debug\\pin_config.obj.cvidefprots" ;
+OUTFILE on "c:\\Users\\chris\\Documents\\Senior Design\\Automated-Synchro-Tester\\cvibuild.ui_interface_v1\\Debug\\pin_config.obj" = "c:\\Users\\chris\\Documents\\Senior Design\\Automated-Synchro-Tester\\cvibuild.ui_interface_v1\\Debug\\pin_config.obj.out" ;
+PrjObjects += "c:\\Users\\chris\\Documents\\Senior Design\\Automated-Synchro-Tester\\cvibuild.ui_interface_v1\\Debug\\pin_config.obj" ;
+Always $(PrjObjects) ;
+Depends all : $(PrjObjects) ;
