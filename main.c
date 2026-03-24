@@ -9,8 +9,14 @@
 #include "nai_8810a.h"
 #include <rs232.h>
 #include "API8810ADll.h"
+#define ENCODER_BITS 21
+#define COUNTS_PER_REV 2097152.0
 
 static NAI8810A gApi;
+
+static int gEncoderComPort = 5;   /* change 5 to whatever Device Manager shows */
+static int gEncoderConnected = 0;
+
 
 static int gComPort = 4;      /* COM4 */
 static int gConnected = 0;
@@ -27,6 +33,11 @@ static int gSuppressAutoApply = 1;
 
 static int gLiveAngleOn = 0;
 
+static int gLiveEncoderAngleOn = 0;
+static int E201_SendCommand(const char *cmd);
+static int E201_ReadResponse(char *out, int outSize, double timeoutSec);
+static int E201_ReadCount(unsigned long *count);
+static double E201_CountToDegrees(unsigned long count);
 
 /* ------------------------------------------------------------- */
 /* API-8810A RUNTIME LOADING                                     */
@@ -644,5 +655,234 @@ int CVICALLBACK ReadAngleOnceCB (int panel, int control, int event,
     }
 
     SetCtrlVal(panel, TABPANEL_CTRL_ANGLE_NUM, ang);
+    return 0;
+}
+
+/* ------------------------------------------------------------- */
+/* E201 ENCODER HELPERS                                          */
+/* ------------------------------------------------------------- */
+
+static int E201_Set21Bits(void)
+{
+    char rx[128];
+    char msg[200];
+    int n;
+
+    FlushInQ(gEncoderComPort);
+
+    n = E201_SendCommand("B21");
+    if (n < 0)
+        return -1;
+
+    n = E201_ReadResponse(rx, sizeof(rx), 1.0);
+    if (n <= 0)
+        return -2;
+
+    sprintf(msg, "Reply to B21 = [%s]", rx);
+    MessagePopup("E201 Debug", msg);
+
+    if (strstr(rx, "OK") == 0)
+        return -3;
+
+    return 0;
+}
+
+static int E201_ReadVersion(char *out, int outSize)
+{
+    FlushInQ(gEncoderComPort);
+
+    if (E201_SendCommand("v") < 0)
+        return -1;
+
+    if (E201_ReadResponse(out, outSize, 1.0) <= 0)
+        return -2;
+
+    return 0;
+}
+
+static int E201_ReadWordWidth(char *out, int outSize)
+{
+    FlushInQ(gEncoderComPort);
+
+    if (E201_SendCommand("b") < 0)
+        return -1;
+
+    if (E201_ReadResponse(out, outSize, 1.0) <= 0)
+        return -2;
+
+    return 0;
+}
+
+static int E201_SendCommand(const char *cmd)
+{
+    int written;
+
+    if (!gEncoderConnected)
+        return -1;
+
+    written = ComWrt(gEncoderComPort, cmd, (int)strlen(cmd));
+    return (written == (int)strlen(cmd)) ? 0 : -2;
+}
+
+static int E201_ReadResponse(char *out, int outSize, double timeoutSec)
+{
+    double t0;
+    int total = 0;
+    int n;
+    char ch;
+
+    if (out == 0 || outSize < 2)
+        return -1;
+
+    out[0] = 0;
+    t0 = Timer();
+
+    while ((Timer() - t0) < timeoutSec && total < outSize - 1)
+    {
+        n = ComRd(gEncoderComPort, &ch, 1);
+
+        if (n > 0)
+        {
+            if (ch == '\r' || ch == '\n')
+                break;
+
+            out[total++] = ch;
+        }
+        else
+        {
+            Delay(0.001);
+        }
+    }
+
+    out[total] = 0;
+    return total;
+}
+
+static int E201_ReadCount(unsigned long *count)
+{
+    char rx[64];
+    long v;
+
+    if (!count)
+        return -1;
+
+    FlushInQ(gEncoderComPort);
+
+    if (E201_SendCommand("?") < 0)
+        return -2;
+
+    if (E201_ReadResponse(rx, sizeof(rx), 0.5) <= 0)
+        return -3;
+
+    v = atol(rx);
+    if (v < 0)
+        return -4;
+
+    *count = (unsigned long)v;
+    return 0;
+}
+
+static double E201_CountToDegrees(unsigned long count)
+{
+    double ang;
+
+    ang = ((double)count * 360.0) / 2097152.0;
+
+    while (ang >= 360.0)
+        ang -= 360.0;
+    while (ang < 0.0)
+        ang += 360.0;
+
+    return ang;
+}
+
+int CVICALLBACK EncoderConnectCB(int panel, int control, int event,
+                                 void *callbackData, int eventData1, int eventData2)
+{
+    int err, st;
+    char rx[128];
+    char msg[200];
+
+    if (event != EVENT_COMMIT)
+        return 0;
+
+    if (gEncoderConnected)
+    {
+        MessagePopup("Encoder Connect", "E201 is already connected.");
+        return 0;
+    }
+
+    err = OpenComConfig(gEncoderComPort, "", 115200, 0, 8, 1, 512, 512);
+    if (err < 0)
+    {
+        sprintf(msg, "Could not open COM%d", gEncoderComPort);
+        MessagePopup("Encoder Connect Failed", msg);
+        return 0;
+    }
+
+    SetXMode(gEncoderComPort, 1);
+    FlushInQ(gEncoderComPort);
+    FlushOutQ(gEncoderComPort);
+
+    gEncoderConnected = 1;
+
+    st = E201_ReadVersion(rx, sizeof(rx));
+    if (st == 0)
+    {
+        sprintf(msg, "Version reply: [%s]", rx);
+        MessagePopup("E201 Debug", msg);
+    }
+    else
+    {
+        MessagePopup("E201 Debug", "No reply to v command.");
+    }
+
+    st = E201_ReadWordWidth(rx, sizeof(rx));
+    if (st == 0)
+    {
+        sprintf(msg, "Word width reply: [%s]", rx);
+        MessagePopup("E201 Debug", msg);
+    }
+
+    st = E201_Set21Bits();
+    if (st < 0)
+    {
+        sprintf(msg, "Opened COM%d, but failed to set 21-bit mode. Error %d", gEncoderComPort, st);
+        MessagePopup("Encoder Connect", msg);
+        return 0;
+    }
+
+    MessagePopup("Encoder Connect", "E201 connected successfully.");
+    return 0;
+}
+
+int CVICALLBACK ReadEncoderCB(int panel, int control, int event,
+                              void *callbackData, int eventData1, int eventData2)
+{
+    unsigned long count;
+    double angleDeg;
+    int st;
+    char msg[128];
+
+    if (event != EVENT_COMMIT)
+        return 0;
+
+    if (!gEncoderConnected)
+    {
+        MessagePopup("Read Encoder", "Encoder is not connected.");
+        return 0;
+    }
+
+    st = E201_ReadCount(&count);
+    if (st < 0)
+    {
+        sprintf(msg, "Failed to read encoder count: %d", st);
+        MessagePopup("Read Encoder", msg);
+        return 0;
+    }
+
+    angleDeg = E201_CountToDegrees(count);
+    SetCtrlVal(panel, TABPANEL_4_ENCODER_CONTROL, angleDeg);
+
     return 0;
 }
